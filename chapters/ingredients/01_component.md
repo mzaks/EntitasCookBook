@@ -83,6 +83,6 @@ The framework will make sure that only one instance of a unique component can be
 
 Now how is it better than _singleton pattern_? It is better due to the fact that we separate state from behaviour. The component can also be replaced and removed. So it breaks the idiom of the _singleton pattern_ where an object is unique and persistant throughout application life cycle. A unique component is more af a gloabel variable than a singleton.
 
-# How many component does an Application need?
+# How many components does an application need?
 
 This question comes up all the time specifically with people new to ECS. And as always the right answer is - _it depends_. However from my experience 150 is quite a good number for mid core mobile games. As a matter of fact, I compared two different mobile games I worked on and both had around 150 components. That sad, an iOS App I build with EntitasKit (Swift implenetation) has around 50 components. Which is also not that surprising, as games tend to be much more complex than Apps.
