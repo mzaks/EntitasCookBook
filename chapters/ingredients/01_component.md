@@ -12,7 +12,7 @@ public sealed class MovableComponent : IComponent {
 }
 ```
 
-As you can see a component is a class which implements an `IComponent` interface. It does not have any properties so it is a _flag component_. Flag components are defined to flag entities. In this case we say that something is movable. So if we will have an entity at ahdn we can ask `entity.isMovable` and get `true` or `false` back. We also can ask for all entities which have `MovableComponent`, but this topic I would rather discuss later.
+As you can see a component is a class which implements an `IComponent` interface. It does not have any properties so it is a _flag component_. Flag components are defined to flag entities. In this case we say that something is movable. So if we have an entity we can ask `entity.isMovable` and get `true` or `false` back. We also can ask for all entities which have `MovableComponent`, but this topic I would rather discuss later.
 
 ## Data Component
 Data component can have multiple properties which can store pure data:
@@ -28,10 +28,10 @@ public sealed class PositionComponent : IComponent {
 
 In Entitas-CSharp we can add a position to an entity with following statement:
 ```csharp
-entity.AddPosition(new PositionComponent(1, 2));
+entity.AddPosition(1, 2);
 ```
 
-There are method to check if an entity `Has` a component. We can also `Get`, `Replace` and `Remove` components. Every entity can have only one type of a component set. This is why we have `Replace` methods. But we can combine all the different types of components in a single entity. This is why it is better to slice your components as thin as posible. This gives you big benefits in terms of feature _improvisation_.
+There is a method to check if an entity has a component(`hasPosition`). We can also get(`position`), replace(`ReplacePosition`) and remove(`RemovePosition`) components. Every entity can have only one type of a component set. This is why we have `Replace` methods. But we can combine all the different types of components in a single entity. This is why it is better to slice your components as thin as posible. This gives you big benefits in terms of feature _improvisation_.
 
 ## Reference Component
 A reference component is technically equal to the _data component_ the difference is rather logical.
