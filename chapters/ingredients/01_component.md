@@ -62,7 +62,7 @@ public sealed class DelegateComponent : IComponent {
 In this case we can store a function/delegate/action inside of a component and there for attach it to an entity. This is a valid use of components, but it does more harm than good as we will discuss in recepies section.
 
 # Unique Component
-In every application there are many cases where you would like to have only one instance of something. This idea manifested itself in the well knowen and often hated _singleton pattern_. In Entitas we have something similar but, better.
+In every application there are many cases where you would like to have only one instance of something. This idea manifested itself in the well known and often hated _singleton pattern_. In Entitas we have something similar but, better.
 
 Every type of components we discussed previously can be defined as unique component.
 
@@ -79,10 +79,10 @@ public sealed class GameBoardComponent : IComponent {
 
 For this we just has to annotate the class as unique.
 
-The framework will make sure that only one instance of a unique component can be present in your context (see context chapter). This is why in Entitas-CSharp we can get an instance of unique component with follwoing expression - `context.gameBoard`.
+The framework will make sure that only one instance of a unique component can be present in your context (see context chapter). This is why in Entitas-CSharp we can get an instance of unique component with following expression - `context.gameBoard`.
 
-Now how is it better than _singleton pattern_? It is better due to the fact that we separate state from behaviour. The component can also be replaced and removed. So it breaks the idiom of the _singleton pattern_ where an object is unique and persistant throughout application life cycle. A unique component is more af a gloabel variable than a singleton.
+Now how is it better than _singleton pattern_? It is better due to the fact that we separate state from behaviour. The component can also be replaced and removed. So it breaks the idiom of the _singleton pattern_ where an object is unique and persistant throughout application life cycle. A unique component is more of a global variable than a singleton.
 
 # How many components does an application need?
 
-This question comes up all the time specifically with people new to ECS. And as always the right answer is - _it depends_. However from my experience 150 is quite a good number for mid core mobile games. As a matter of fact, I compared two different mobile games I worked on and both had around 150 components. That sad, an iOS App I build with EntitasKit (Swift implenetation) has around 50 components. Which is also not that surprising, as games tend to be much more complex than Apps.
+This question comes up all the time specifically with people new to ECS. And as always the right answer is - _it depends_. However from my experience 150 is quite a good number for mid core mobile games. As a matter of fact, I compared two different mobile games I worked on and both had around 150 components. That said, an iOS App I build with EntitasKit (Swift implenetation) has around 50 components. Which is also not that surprising, as games tend to be much more complex than Apps.
