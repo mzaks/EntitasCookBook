@@ -8,7 +8,7 @@ To be honest with you, writing this book was not my idea. Fine people from Entit
 
 # Who is this book for?
 
-This book will cover ECS concepts. How those concepts are implemented in Entitas. What are the tools we build to make developing with Entitas a better experience. And last but not least, the recepies for building games and apps with Entitas.
+This book will cover ECS concepts. How those concepts are implemented in Entitas. What are the tools we build to make developing with Entitas a better experience. And last but not least, the recipes for building games and apps with Entitas.
 
 If you are an ECS novice and want to understand what it is? This book is for you.
 
@@ -32,7 +32,7 @@ This section will contain the ECS concepts and the implementation of them in Ent
 ## 2. Appliances
 Appliances are the tools we implemented in order to work with the ingredients. I will cover already established tools, but will also spill some ideas for the things which could be cool, but are still either in early development or just mindfarts which I had or heard over the last 5+ years. Maybe some of those will inspire you to implement them or have another idea which is even cooler.
 
-## 3. Recepies
+## 3. Recipes
 This section will cover real world problems and how they can be solved with Entitas. Here you will learn how to use ingredients and appliances to make delicious meals. This section will probably have the highest amount of chapters and will be a continuous work in progress. We will also grade the recipe and define how good of an idea this recipe is.
 
 # Why should I care about ECS?
