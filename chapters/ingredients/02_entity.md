@@ -1,12 +1,14 @@
 # Entity
-An entity is just a bag of components. We can add a component to an entity, we can get component from an entity and we can remove component from an entity. In Entitas-CSharp there is an internal/general way of doing those operations:
+
+An entity is just a bag of components. We can add a component to an entity, we can get a component from an entity and we can remove a component from an entity. In Entitas-CSharp there is an internal/general way of doing those operations:
 ```csharp
 entity.AddComponent(index, component);
 entity.GetComponent(index);
 entity.RemoveComponent(index);
 ```
+
 We have to use an index, becuase the _bag_ is implemented as an array of `IComponent`s. In Entitas-CSharp we chose to use an array for performance reasons. However there are different implementations which chose to use a hash map, making component type the key of the map and component instance the value.
-Before you get to upset about the inconvinient API, let me show you how we add, get and remove components in Entitas-CSharp in practice.
+Before you get too upset about the inconvenient API, let me show you how we add, get and remove components in Entitas-CSharp in practice.
 
 Say we have a `PositionComponent`. 
 ```csharp
@@ -15,7 +17,7 @@ public sealed class PositionComponent : IComponent {
 }
 ```
 
-Than the API looks as following:
+Then the API looks as following:
 
 ```csharp
 entity.AddPosition(new IntVector2(x, y));
@@ -26,9 +28,10 @@ entity.RemovePosition();
 We get this nice API thanks to the code generation tools we implemented for Entitas-CSharp. You can find more on this topic in Code Generation chapter in Appliances section.
 
 ## Entity creation
-An entity should always be a part of a context. This is why we are not able to instantiate an entity directly, but have to call `context.CreateEntity()`. Context is a managing datastructure which monitors entites life cycle. You can find more details about context in Context chapter.
 
-While an entity can be created and destroyed, it is important to know that in Entitas-CSharp destroyed entities are not really destroyed, but object pooled in the context. This is a performance optimisation to avoid garbage collection. The side effect of this fact is that users has to be careful if they keep a reference to an entity in there own code.
+An entity should always be a part of a context. This is why we are not able to instantiate an entity directly, but have to call `context.CreateEntity()`. Context is a managing data structure which monitors entities life cycle. You can find more details about context in Context chapter.
+
+While an entity can be created and destroyed, it is important to know that in Entitas-CSharp destroyed entities are not really destroyed, but object pooled in the context. This is a performance optimisation to avoid garbage collection. The side effect of this fact is that users have to be careful if they keep a reference to an entity in there own code.
 
 When an entity is destroyed it will be put into a temporary pool and reused if it's reference count is back at `0`. 
 
@@ -53,4 +56,4 @@ Here is a list of all the events entity has in the current imlplementation of En
 - OnEntityReleased
 - OnDestroyEntity
 
-Those events are the same events context uses to monitor entity. They are exposed for the external use as well, however I would not recomend to use them directly. In a typical use case you rather want to have a group, collector or a reactive system(described in the respective chapters). However it is good to know that those facilities are present and it could be important to use specifically if you are implementing some tooling.
+Those events are the same events context uses to monitor entity. They are exposed for the external use as well, however I would not recomend to use them directly. In a typical use case you rather want to have a group, collector or a reactive system (described in the respective chapters). However it is good to know that those facilities are present and it could be important to use specifically if you are implementing some tooling.
