@@ -9,7 +9,7 @@ Another type of systems which are executed periodically is `ICleanupSystem`. Thi
 
 ### Setup and Teardown
 
-Normally when we start a game we need to create the initial state first. This is why in Entitas-CShapr we have `IInitializeSystem` interface. It has a `void Initialize();` method which should contain your games initialisation logic - basically creating all the entitities and other state you need to start playing.
+Normally when we start a game we need to create the initial state first. This is why in Entitas-CShapr we have `IInitializeSystem` interface. It has a `void Initialize();` method which should contain your games initialisation logic - basically creating all the entities and other state you need to start playing.
 
 The counterpart of `IInitializeSystem` is `ITearDownSystem`. This one has `void TearDown();` method, where we put code which will be executed before we close the game/Level/Scene (what ever fits your use case).
 
@@ -75,9 +75,9 @@ public class GameController : MonoBehaviour {
 }
 ```
 
-A question which comes up quite freaquently is, if the periodical systems should be executed on `FixedUpdate` rather than `Update`. This is generally your personal desicion to make. I schedule the systems normally on `Update`, if in your case it is important to schedule on `FixedUpdate` or even `LateUpdate` it is your decision to make. You could even go bananas and have multiple system hierarchies, where one is executed on `Update` and another on `FixedUpdate`, not sure it is a good idea though.
+A question which comes up quite frequently is, if the periodical systems should be executed on `FixedUpdate` rather than `Update`. This is generally your personal desicion to make. I schedule the systems normally on `Update`, if in your case it is important to schedule on `FixedUpdate` or even `LateUpdate` it is your decision to make. You could even go bananas and have multiple system hierarchies, where one is executed on `Update` and another on `FixedUpdate`, not sure it is a good idea though.
 
 # How do I implement a typical execute system?
-An execute system is run periodically, so what we normaly do is, we set one or multiple groups in system constructor and than in `Execute` we iterate other entites in those groups and change them or create new entities.
+An execute system is run periodically, so what we normaly do is, we set one or multiple groups in system constructor and than in `Execute` we iterate other entities in those groups and change them or create new entities.
 
 Generally speaking, we are pulling data from the context and doing something with it. In Entitas-CSharp there is also another way of dealing with data, you will learn all about it in the next chapter.
