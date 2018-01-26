@@ -1,6 +1,6 @@
 # "Hello world"
 
-"Hello world" is a typical example, which is used to illustrate the key benefits of _tehcnolofy at hand_. For programming languages, people use a small programm which outputs __Hello World__ to the console. In case of an ECS most implementations I saw, start with a `MoveSystem`.
+"Hello world" is a typical example, which is used to illustrate the key benefits of _technology at hand_. For programming languages, people use a small programm which outputs __Hello World__ to the console. In case of an ECS most implementations I saw, start with a `MoveSystem`.
 
 ## Move System
 
@@ -44,7 +44,7 @@ public sealed class MoveSystem : IExecuteSystem {
 }
 ```
 
-This is how we can move things with Entitas. It is a very simple example, but it illustrats the strength of an ECS. This one system can find every relevant entity and move it. We don't care what kind of other component are attached to this entity, it can be a car a human a dog a house, we don't care. We just defined that if something have a position and a velocity, it will be moved.
+This is how we can move things with Entitas. It is a very simple example, but it illustrates the strength of an ECS. This one system can find every relevant entity and move it. We don't care what kind of other component are attached to this entity, it can be a car a human a dog a house, we don't care. We just defined that if something have a position and a velocity, it will be moved.
 
 ## Decelerate System
 
@@ -100,7 +100,7 @@ public sealed class StopSystem : ReactiveSystem<GameEntity> {
 }
 ```
 
-Now it is posible for us to simplify the decelerate system, by removing the velocity check and just replacing current velocity with reduced velocity.
+Now it is possible for us to simplify the decelerate system, by removing the velocity check and just replacing current velocity with reduced velocity.
 
 ```csharp
 using Entitas;
@@ -127,4 +127,4 @@ public sealed class DecelerateSystem : IExecuteSystem {
 
 This is all interesting, but I still did not explain my main point. My __main point__ is that systems don't communicate to each other directly. In object oriented programming, functional programming and even procedural programming - objects, functions, or procedures _talk_ to each other directly and syncronously. In ECS systems only query state and change state. They are decoupled from each other. Or atleast they are unaware of each others existence. You might argue that things are coupled through component types, but component types are data driven. We define them in order to reflect the _"world"_ we want to simulate, so __data__ becomes our [API](https://en.wikipedia.org/wiki/Application_programming_interface).
 
-It is a very unique approach in handling things resulting from what I call the first rule of ECS - __Separate state from behaviour__. This is whjy I think it is worthy of being _Hello World_.
+It is a very unique approach in handling things resulting from what I call the first rule of ECS - __Separate state from behaviour__. This is why I think it is worthy of being _Hello World_.
