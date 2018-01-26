@@ -7,7 +7,7 @@ A collector is a class which observers a group. Here is an example from MatchOne
 context.CreateCollector(GameMatcher.GameBoardElement.Removed());
 ```
 
-In this example we defien that we want to collect all entities which got `GameBoardElement` component removed. Internally a collector will ask for a group of entities which contain `GameBoardElement` components. It will subscribe it self to group events and keep a list of references to entities which will leave the group, as we were interested in `Removed` event. There are follwoing three events that we can be interested in:
+In this example we define that we want to collect all entities which got `GameBoardElement` component removed. Internally a collector will ask for a group of entities which contain `GameBoardElement` components. It will subscribe it self to group events and keep a list of references to entities which will leave the group, as we were interested in `Removed` event. There are follwoing three events that we can be interested in:
 - Added
 - Removed
 - AddedOrRemoved
