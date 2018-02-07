@@ -26,13 +26,13 @@ This way we can say that we need a group of entities which have `Postion` and `V
 A matcher definiton can also start with `AnyOf`: `context.GetGroup(Matcher.AnyOf(Matcher.C, Matcher.D).NoneOf(Matcher.E))`
 
 # Group observation
-As I mentioned before a group is always up to date, so it provides a great benefit if we can observ a group and get notified when an entity was added or removed from it. Even more importanly is to understand than, when we replace a component on an entity, old component will be removed and new component will be added. This means that the entity will leave a group and than reenter it with a new value. This is what provides us with foundation for reactive programming.
+As I mentioned before a group is always up to date, so it provides a great benefit if we can observe a group and get notified when an entity was added or removed from it. Even more importantly is to understand than, when we replace a component on an entity, old component will be removed and new component will be added. This means that the entity will leave a group and than reenter it with a new value. This is what provides us with foundation for reactive programming.
 
-Internally in Entitas-CSharp we don't really remove and add components. The generated code asks user for new values, fires the events as if we would remove the component with old valuse, sets new values in the component and fires and event as if a new component was added. This way we avoid memory allocation and simulate a feeling of working with immutable components.
+Internally in Entitas-CSharp we don't really remove and add components. The generated code asks user for new values, fires the events as if we would remove the component with old values, sets new values in the component and fires and event as if a new component was added. This way we avoid memory allocation and simulate a feeling of working with immutable components.
 
 A group has follwoing events you can subscribe to:
 - OnEntityAdded
 - OnEntityRemoved
 - OnEntityUpdated
 
-Other ingridiens like Collector, Index and Reactive system are using the same events. So, for day to day work, you probably can use those. But if you want to build somethign custom, you might want to have a look at implementation details.
+Other ingredients like Collector, Index and Reactive system are using the same events. So, for day to day work, you probably can use those. But if you want to build something custom, you might want to have a look at implementation details.

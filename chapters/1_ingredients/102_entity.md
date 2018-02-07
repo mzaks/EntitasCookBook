@@ -56,4 +56,4 @@ Here is a list of all the events entity has in the current imlplementation of En
 - OnEntityReleased
 - OnDestroyEntity
 
-Those events are the same events context uses to monitor entity. They are exposed for the external use as well, however I would not recomend to use them directly. In a typical use case you rather want to have a group, collector or a reactive system (described in the respective chapters). However it is good to know that those facilities are present and it could be important to use specifically if you are implementing some tooling.
+Those events are the same events context uses to monitor entity. They are exposed for the external use as well, however I would not recommend to use them directly. In a typical use case you rather want to have a group, collector or a reactive system (described in the respective chapters). However it is good to know that those facilities are present and it could be important to use specifically if you are implementing some tooling.
