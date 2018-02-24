@@ -18,4 +18,4 @@ A collector can also be created with an array of groups and events. Meaning that
 
 A collector can be activated and deactivated, so that we can stop and resume the observing of the group. We can iterate over collected entities and clear them out.
 
-Collector is what powers reactive systems. You probably will not use it stand alone, but it is still a very important ingridient for Entitas.
+Collector is what powers reactive systems. You probably will not use it stand alone, but it is still a very important ingredient for Entitas.
