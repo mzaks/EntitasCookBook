@@ -1,7 +1,7 @@
 # System
 The main goal of ECS or data oriented design is to separate state form behaviour. System is a place were we define the behaviour. In a system we can write code which creates new state, changes given state or destroys state.
 
-In Entitas-CSharp we have multiple interfaces which we have to implement in order to mark a class as a system. `ISystem` interface is a base interface, which we don't have to implement our selves. It is just a marked (so called ghost protocol) which is used internally.
+In Entitas-CSharp we have multiple interfaces which we have to implement in order to mark a class as a system. `ISystem` interface is a base interface, which we don't have to implement ourselves. It is just a marked (so called ghost protocol) which is used internally.
 
 If we want to have a system which should be executed periodically, we need to implement `IExecuteSystem`. This interface has only one method `void Execute();`. This is the method where we put the code which should be executed on every tick.
 
@@ -14,7 +14,7 @@ Normally when we start a game we need to create the initial state first. This is
 The counterpart of `IInitializeSystem` is `ITearDownSystem`. This one has `void TearDown();` method, where we put code which will be executed before we close the game/Level/Scene (what ever fits your use case).
 
 # Composing systems
-Everything I described in this chapter till now, were only interfaces which reflect conventions we use to break apart behaviour code. I saw projects where people used Entitas without systems. They implemented there own Command Pattern. But if you want to follow along with the systems aproach you might want to compose systems together in a certain hierarchie. In order to do this we provide a `Systems` class, which is implements `IInitializeSystem, IExecuteSystem, ICleanupSystem, ITearDownSystem` interfaces. We can `Add` a system to instance of `Systems` class. So that when we call an `Execute(), Cleanup(), Initialize(), TearDown()` method on this instance it will call those methods on the added systems. `Systems` class is a typical parent node in sense of [Composite pattern](https://en.wikipedia.org/wiki/Composite_pattern). 
+Everything I described in this chapter till now, were only interfaces which reflect conventions we use to break apart behaviour code. I saw projects where people used Entitas without systems. They implemented there own Command Pattern. But if you want to follow along with the systems aproach you might want to compose systems together in a certain hierarchy. In order to do this we provide a `Systems` class, which implements the `IInitializeSystem, IExecuteSystem, ICleanupSystem, ITearDownSystem` interfaces. We can `Add` a system to an instance of the `Systems` class. So that when we call an `Execute(), Cleanup(), Initialize(), TearDown()` method on this instance it will call those methods on the added systems. `Systems` class is a typical parent node in sense of [Composite pattern](https://en.wikipedia.org/wiki/Composite_pattern). 
 
 When we look at the MatchOne example we can see that we don't use `Systems` class directly:
 
@@ -78,6 +78,6 @@ public class GameController : MonoBehaviour {
 A question which comes up quite frequently is, if the periodical systems should be executed on `FixedUpdate` rather than `Update`. This is generally your personal desicion to make. I schedule the systems normally on `Update`, if in your case it is important to schedule on `FixedUpdate` or even `LateUpdate` it is your decision to make. You could even go bananas and have multiple system hierarchies, where one is executed on `Update` and another on `FixedUpdate`, not sure it is a good idea though.
 
 # How do I implement a typical execute system?
-An execute system is run periodically, so what we normaly do is, we set one or multiple groups in system constructor and than in `Execute` we iterate other entities in those groups and change them or create new entities.
+An execute system is run periodically, so what we normaly do is, we set one or multiple groups in system constructor and then in `Execute` we iterate other entities in those groups and change them or create new entities.
 
 Generally speaking, we are pulling data from the context and doing something with it. In Entitas-CSharp there is also another way of dealing with data, you will learn all about it in the next chapter.
