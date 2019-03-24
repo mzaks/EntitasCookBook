@@ -78,6 +78,6 @@ public class GameController : MonoBehaviour {
 A question which comes up quite frequently is, if the periodical systems should be executed on `FixedUpdate` rather than `Update`. This is generally your personal desicion to make. I schedule the systems normally on `Update`, if in your case it is important to schedule on `FixedUpdate` or even `LateUpdate` it is your decision to make. You could even go bananas and have multiple system hierarchies, where one is executed on `Update` and another on `FixedUpdate`, not sure it is a good idea though.
 
 # How do I implement a typical execute system?
-An execute system is run periodically, so what we normaly do is, we set one or multiple groups in system constructor and then in `Execute` we iterate other entities in those groups and change them or create new entities.
+An execute system is run periodically, so what we normaly do is, we set one or multiple groups in system constructor and then in `Execute` we iterate over entities in those groups and change them or create new entities.
 
 Generally speaking, we are pulling data from the context and doing something with it. In Entitas-CSharp there is also another way of dealing with data, you will learn all about it in the next chapter.
