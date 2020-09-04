@@ -92,7 +92,7 @@ public sealed class StopSystem : ReactiveSystem<GameEntity> {
 
     protected override void Execute(List<GameEntity> entities) {
         foreach (var e in entities) {
-            if (e.velocity.x == 0 && e.velocity.x == 0) {
+            if (e.velocity.x == 0 && e.velocity.y == 0) {
                 e.RemoveVelocity();
             }
         }
