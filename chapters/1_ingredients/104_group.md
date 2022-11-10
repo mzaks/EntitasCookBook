@@ -1,5 +1,5 @@
 # Group
-The typical _"Hello World"_ of ECS is the so called "move system". A move system is a system which takes all entites which have position and velocity components and exchanging the position component on this entity, effectivly moving it toward the velocity vector. The __AHA__ moment comes when we realise that it does not matter what kind of other components are on this entity. It can be a person, dog, car, helicopter or a house. If it has a position component and a velocity component, it has to be moved.
+The typical _"Hello World"_ of ECS is the so called "move system". A move system is a system which takes all entites which have position and velocity components and exchanging the position component on this entity, effectively moving it toward the velocity vector. The __AHA__ moment comes when we realise that it does not matter what kind of other components are on this entity. It can be a person, dog, car, helicopter or a house. If it has a position component and a velocity component, it has to be moved.
 
 ### How do we get those entities though?
 As described in context chapter, a context manages all the entites so we could ask context for all entities and iterate through all of them, collecting those who has position and velocity components. This would be a very naive implementation. What we have in Entitas for this case is a so called __Group__.
@@ -19,7 +19,7 @@ A matcher is a way how we can describe what kind of entites we are interested in
 context.GetGroup(GameMatcher.AllOf(GameMatcher.Position, GameMatcher.Velocity).NoneOf(GameMatcher.NotMovable));
 ```
 
-This way we can say that we need a group of entities which have `Postion` and `Velocity` components but does not have `NotMovable` component.
+This way we can say that we need a group of entities which have `Position` and `Velocity` components but does not have `NotMovable` component.
 
 `AllOf` and `AnyOf` can also be combined: `context.GetGroup(Matcher.AllOf(Matcher.A, Matcher.B).AnyOf(Matcher.C, Matcher.D).NoneOf(Matcher.E))`
 
@@ -30,7 +30,7 @@ As I mentioned before a group is always up to date, so it provides a great benef
 
 Internally in Entitas-CSharp we don't really remove and add components. The generated code asks user for new values, fires the events as if we would remove the component with old values, sets new values in the component and fires and event as if a new component was added. This way we avoid memory allocation and simulate a feeling of working with immutable components.
 
-A group has follwoing events you can subscribe to:
+A group has following events you can subscribe to:
 - OnEntityAdded
 - OnEntityRemoved
 - OnEntityUpdated
