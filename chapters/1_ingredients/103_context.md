@@ -55,16 +55,16 @@ public struct EditorOnlyVisual
 }
 ```
 
-The annotations above component class declarations tell the code generator which context types we want to have. In this particular example we have a `Game`, `Meta` and `UI` context. As you can see with `SceneComponent`, one component can be part of multiple contexts. Meaning - a table `Game` and table `UI` can both have column `Scene`, if we want to project it again onto realtional database mental model.
+The annotations above component class declarations tell the code generator which context types we want to have. In this particular example we have a `Game`, `Meta` and `UI` context. As you can see with `SceneComponent`, one component can be part of multiple contexts. Meaning - a table `Game` and table `UI` can both have column `Scene`, if we want to project it again onto relational database mental model.
 
 ### How many context types should I have?
-This really depends on your use case. If you have a fairly small/simple game, you can go with just one context. It is much simpler this way. You just have to keep in mind than an entity is backed by an array of `Icomponent`s meaning that it is an array of pointers and a pointer is 8bytes big on an 64bit architecture. So if you have 50 components, every entity will be atleast 400bytes big. If you have 100 entites in your game, they take up 40KB. Now it is up to you to decide if 40KB is alot or not. In case you have hundreds of components and thausends of entites, it would be better to start slicing.
+This really depends on your use case. If you have a fairly small/simple game, you can go with just one context. It is much simpler this way. You just have to keep in mind than an entity is backed by an array of `Icomponent`s meaning that it is an array of pointers and a pointer is 8bytes big on an 64bit architecture. So if you have 50 components, every entity will be at least 400bytes big. If you have 100 entites in your game, they take up 40KB. Now it is up to you to decide if 40KB is a lot or not. In case you have hundreds of components and thousands of entites, it would be better to start slicing.
 
-Sometimes it is also benefitial to slice components into different contexts just for organisational purposes. You probably have components which are needed only in core game context and some which are only relevant for meta game. If there is definetly no overlap, meaning there will be no entity which will need to store component `A` and component `Z` than it is better to puth them in different _"tables"_.
+Sometimes it is also beneficial to slice components into different contexts just for organizational purposes. You probably have components which are needed only in core game context and some which are only relevant for meta game. If there is definitly no overlap, meaning there will be no entity which will need to store component `A` and component `Z` than it is better to put them in different _"tables"_.
 
 ## Context observation
 Same as with entity a context can be observed for changes. And this is also what we use internally for groups (described in its own chapter) and visual debugger.
-If you want to write some tooling for Entitas e.g. custom Logging or profiling you can use follwoing events:
+If you want to write some tooling for Entitas e.g. custom Logging or profiling you can use following events:
 
 - OnEntityCreated
 - OnEntityWillBeDestroyed
