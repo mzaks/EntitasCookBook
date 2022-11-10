@@ -7,7 +7,7 @@ entity.GetComponent(index);
 entity.RemoveComponent(index);
 ```
 
-We have to use an index, becuase the _bag_ is implemented as an array of `IComponent`s. In Entitas-CSharp we chose to use an array for performance reasons. However there are different implementations which chose to use a hash map, making component type the key of the map and component instance the value.
+We have to use an index, because the _bag_ is implemented as an array of `IComponent`s. In Entitas-CSharp we chose to use an array for performance reasons. However there are different implementations which chose to use a hash map, making component type the key of the map and component instance the value.
 Before you get too upset about the inconvenient API, let me show you how we add, get and remove components in Entitas-CSharp in practice.
 
 Say we have a `PositionComponent`. 
